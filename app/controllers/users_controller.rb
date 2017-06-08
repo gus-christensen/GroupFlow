@@ -15,10 +15,10 @@ post '/users' do
     @errors << "passwords didn't match"
   end
   if @errors.length != 0
-    erb :'/users/new'
+    erb :'/users/login'
   else
     User.create( {email: params[:email], password: params[:password1] } )
-    redirect '/'
+    redirect '/users/login'
   end
 end
 
@@ -31,7 +31,7 @@ post '/users/login' do
 
   if user.authenticate(params[:password])
     session[:message] = "Logged in as #{params[:email]}."
-    session[:user_id] = user.id
+    session[:id] = user.id
     redirect '/'
   else
     @errors = ["authentication failed"]
