@@ -19,7 +19,7 @@ body {
 }
 
 a {
-  color: #32bb7d;
+  color: #FF0040;
   text-decoration: none;
 }
 
@@ -63,6 +63,18 @@ input[type=text], input[type=password], textarea {
   background-color: #fefefe;
 }
 
+.bg-mintcream {
+  background-color: MintCream;
+}
+
+.bg-yellow {
+  background-color: #FFFF54;
+  background: -webkit-linear-gradient(#FFFFC6, MintCream);
+  background: -o-linear-gradient(#FFFFC6, MintCream);
+  background: -moz-linear-gradient(#FFFFC6, MintCream);
+  background: linear-gradient(#FFFFC6, MintCream);
+}
+
 .button {
   background: #32bb7d;
   color: #fefefe;
@@ -78,6 +90,10 @@ input[type=text], input[type=password], textarea {
 
 .c-dk-green {
   color: #05724f;
+}
+
+.c-firebrick {
+  color: FireBrick;
 }
 
 .c-lt-gray {
@@ -156,8 +172,12 @@ input[type=text], input[type=password], textarea {
   margin-top: 5em;
 }
 
+.max-w-150 {
+  max-width: 180px;
+}
+
 .max-w-700 {
-  max-width: 700px;
+  max-width: 900px;
 }
 
 .no-bg {
@@ -248,8 +268,8 @@ input[type=text], input[type=password], textarea {
   border-radius: 1em;
 }
 
-.t-light-green {
-  color: #32bb7d;
+.t-pink {
+  color: #FF0040;
 }
 
 .text-c {
@@ -273,11 +293,11 @@ input[type=text], input[type=password], textarea {
 }
 
 .logo-container {
-  border: 5px solid #05724f;
-  color: #05724f;
-  width: 305px;
-  height: 305px;
-  border-radius: 50%;
+  border: 5px solid #FF0040;
+  color: #FF0040;
+  width: 505px;
+  height: 140px;
+  border-radius: 48%;
   padding: 20px;
   margin: 0 auto;
   text-align: center;
