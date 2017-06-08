@@ -1,0 +1,7 @@
+<form action="/comments" method="post">
+  <input name="_method" type="hidden" value="put">
+  <% = erb :'/_comment_form', layout: false %>
+  <div>
+    <input type="submit" value="edit">
+  </div>
+</form>
