@@ -33,6 +33,6 @@ comment = Comment.create(
   commentable: post1
   )
 
-post.votes.create(voteable:answerer,value:1)
+post1.votes.create(voteable:answerer,value:1)
 
 
