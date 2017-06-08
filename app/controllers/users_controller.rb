@@ -1,7 +1,3 @@
-get '/' do
-  erb :index
-end
-
 get '/users/new' do
   erb :'/users/new'
 end
@@ -18,7 +14,7 @@ post '/users' do
     erb :'/users/new'
   else
     User.create( {email: params[:email], password: params[:password1] } )
-    redirect '/users/login'
+    redirect '/'
   end
 end
 
