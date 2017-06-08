@@ -1,26 +1,26 @@
 # new
 get '/comments/new' do
-  erb: 'comments/new'
+  erb :'comments/new'
 end
 
 
 # create
 # im a user who is leaving a comment on an answer
-post '/comments' do
-  Comment.new(
-    commentable_id: ,
-    commentable_type: ,
-    user_id: ,
-    body:
-    )
-  post
-  erb:
-end
+# post '/comments' do
+#   Comment.new(
+#     commentable_id: ,
+#     commentable_type: ,
+#     user_id: ,
+#     body:
+#     )
+#   post
+#   erb:
+# end
 
 
 # edit
 get '/comments/:id' do
-  erb: 'comments/edit'
+  erb :'comments/edit'
 end
 
 
