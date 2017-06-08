@@ -1,4 +1,5 @@
-get '/' do
-  @posts = Post.all
-  erb :'/post/index'
-end
+# get '/' do
+# "hey"
+#   # @posts = Post.all
+#   # erb :'/posts/post'
+# end
