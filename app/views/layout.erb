@@ -13,10 +13,7 @@
       <nav class="clearfix mar-b-1">
         <ul class="no-bullets no-margin no-padding right">
           <% if session[:message]!=nil %>
-            <li class="pipe-separate t-light-green left"><a href="/posts/new">newQQ</a></li>
-            <li class="pipe-separate t-light-green left"><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).email %></a></li>
-            <li class="pipe-separate t-light-green left"><a href="/users/logout">log out</a></li>
-            <li class="pipe-separate t-pink left"><a href="/questions/new">newQQ</a></li>
+            <li class="pipe-separate t-pink left"><a href="/posts/new">newQQ</a></li>
             <li class="pipe-separate t-pink left"><a href='/users/<%= session[:id] %>'><%= User.find(session[:id]).email %></a></li>
             <li class="pipe-separate t-pink left"><a href="/users/logout">log out</a></li>
           <% else %>

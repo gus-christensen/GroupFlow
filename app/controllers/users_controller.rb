@@ -18,7 +18,7 @@ post '/users' do
     erb :'/users/login'
   else
     User.create( {email: params[:email], password: params[:password1] } )
-    redirect '/'
+    redirect '/users/login'
   end
 end
 
