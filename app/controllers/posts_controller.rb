@@ -1,4 +1,4 @@
 get '/' do
   @posts = Post.all
-  erb :'/post/index'
+  erb :'/posts/index'
 end
