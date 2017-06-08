@@ -1,5 +1,5 @@
-get '/users' do
-  redirect '/'
+get '/' do
+  erb :index
 end
 
 get '/users/new' do
