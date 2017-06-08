@@ -5,7 +5,7 @@ end
 
 
 # create
-im a user who is leaving a comment on an answer
+# im a user who is leaving a comment on an answer
 post '/comments' do
   Comment.new(
     commentable_id: ,
@@ -28,8 +28,12 @@ end
 put 'comments/:id/edit' do
   comment = comment.find_by(id: params[:id])
   comment.update[params[:body]]
-  redirect '/posts'
+  redirect '/'
 end
 
 
 # delete
+delete 'comments/:id' do
+  Comment.find_by[id:params[:id]].destroy
+  redirect '/'
+end
