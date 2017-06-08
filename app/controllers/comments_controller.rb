@@ -25,7 +25,7 @@ end
 
 
 # update
-put 'comments/:id/edit' do
+put '/comments/:id/edit' do
   comment = comment.find_by(id: params[:id])
   comment.update[params[:body]]
   redirect '/'
@@ -33,7 +33,7 @@ end
 
 
 # delete
-delete 'comments/:id' do
+delete '/comments/:id' do
   Comment.find_by[id:params[:id]].destroy
   redirect '/'
 end
