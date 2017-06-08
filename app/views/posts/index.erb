@@ -5,12 +5,13 @@
 <main role="main">
   <ul class="posts">
     <% @posts.each do |post| %>
-      <li class="post">
-        <span class="titles"><a href="<%= "/" %>"><%= post.title %></a></span>
-        <span class="questions"><a href="<%= "/" %>"><%= post.question %></a></span>
+      <li class="post <%= post.id %>">
+        <span class="titles <%= post.id %>"><a href="<%= "/" %>"><%= post.title %></a></span>
+        <% if post.creator.id == current_user.id %>
+          <a data-method="delete" class="delete <%= post.id %> font-3-4" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
+        <% end %>
       </li>
     <% end %>
   </ul>
 </main>
 
-<a href="/posts/new">New Post</a>

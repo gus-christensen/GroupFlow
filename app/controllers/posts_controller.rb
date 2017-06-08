@@ -4,7 +4,11 @@ get '/posts' do
 end
 
 get '/posts/new' do
-  erb :'posts/new'
+  if logged_in?
+    erb :'posts/new'
+  else
+    redirect '/users/login'
+  end
 end
 
 post '/posts' do
@@ -18,4 +22,14 @@ end
 
 get '/posts/:id' do
 
+end
+
+delete '/posts/:id' do
+  Post.find(params[:id]).destroy
+  if request.xhr?
+    erb :_delete, layout: false
+  else
+    redirect '/posts'
+  end
+end
 
