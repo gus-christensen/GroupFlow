@@ -1,10 +1,11 @@
 <h1 class='text-c'><%= @user.email %>'s situacion</h1>
 
 
-<% %>
-<% %>
-<% %>
-<% %>
-<% %>
-<% %>
+<% if @user.posts.empty? %>
+  <p class='text-c'>you haven't asked any questions</p>
+<% else %>
+  <% @user.posts do |p|%>
+    <%= p.question %>
+  <% end %>
+<% end %>
 <% %>
