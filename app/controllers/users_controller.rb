@@ -1,3 +1,7 @@
+get '/' do
+  redirect '/posts'
+end
+
 get '/users/new' do
   erb :'/users/new'
 end
@@ -27,7 +31,7 @@ post '/users/login' do
 
   if user.authenticate(params[:password])
     session[:message] = "Logged in as #{params[:email]}."
-    session[:id] = user.id
+    session[:user_id] = user.id
     redirect '/'
   else
     @errors = ["authentication failed"]
