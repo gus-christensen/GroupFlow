@@ -15,3 +15,7 @@ post '/posts' do
     erb :'posts/new'
   end
 end
+
+get '/posts/:id' do
+
+
