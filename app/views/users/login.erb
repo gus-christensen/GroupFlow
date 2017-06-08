@@ -1,0 +1,12 @@
+<% if @errors %>
+  <p class="c-lt-gray">Something went wrong...</br>
+  <% @errors.each do |e| %>
+    <div class="c-lt-gray w-66 pad-s-1"><%= e %></div></br>
+  <% end %>
+<% end %></p>
+
+<form action="/users/login" method="post">
+  <input type="text" class="block w-100 pad-1 round-1 text-c center" name="email" placeholder="email"/></br>
+  <input type="password" class="block w-100 pad-1 round-1 text-c center" name="password" placeholder="password"/></br>
+  <input type="submit" class="block w-100 pad-1 round-1 text-c center" value="log in">
+</form></br></br>
