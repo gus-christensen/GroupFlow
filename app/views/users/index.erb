@@ -4,8 +4,14 @@
 <% if @user.posts.empty? %>
   <p class='text-c'>you haven't asked any questions</p>
 <% else %>
-  <% @user.posts do |p|%>
-    <%= p.question %>
+  <% @user.posts.each do |p| %>
+    <li class="post <%= p.id %> no-bullets">
+        <span class="font-3-4"><%= p.created_at.strftime("%B %-d, %Y  %l:%M%P") %></span>
+        <span class="titles <%= p.id %> pad-s-1"><a href="/posts/<%= p.id %>"><%= p.title %></a></span>
+        <% if p.creator.id == current_user.id %>
+          <a data-method="delete" class="delete <%= p.id %> font-3-4 right pad-s-1" href='/posts/<%= p.id %>' data-disabled="true">:delete:</a>
+        <% end %>
+      </li>
   <% end %>
 <% end %>
 <% %>

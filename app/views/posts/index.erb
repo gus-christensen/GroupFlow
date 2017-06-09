@@ -1,15 +1,19 @@
 
 <h1 class='text-c'>Welcome to Flow!</h1>
 
-<h1>Flow Questions</h1>
+<h1 class="text-c">Flow Questions</h1>
 <main role="main">
-  <ul class="posts">
+  <ul class="posts no-bullets center">
     <% @posts.each do |post| %>
       <li class="post <%= post.id %>">
-        <span class="titles <%= post.id %>"><a href="<%= "/" %>"><%= post.title %></a></span>
-        <% if post.creator.id == current_user.id %>
-          <a data-method="delete" class="delete <%= post.id %> font-3-4" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
+        <span class="font-3-4"><%= post.created_at %></span>
+        <span class="titles <%= post.id %> pad-s-1"><a href="/posts/<%= post.id %>"><%= post.title %></a></span>
+        <% if current_user %>
+          <% if post.creator.id == current_user.id %>
+            <a data-method="delete" class="delete <%= post.id %> font-3-4 right pad-s-1" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
+          <% end %>
         <% end %>
+        <span class="font-3-4 right pad-s-4"><%= post.creator.email %></span>
       </li>
     <% end %>
   </ul>

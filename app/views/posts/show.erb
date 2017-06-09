@@ -1,0 +1,14 @@
+<!-- <span class="titles <%= @post.id %>"><a href="/posts/<%= @post.id %>" %>"><%= @post.title %></a></span> -->
+
+
+<h1 class="text-c">Question: <%= @post.title %></h1></br>
+
+<p class="right max-w-600 text-r pad-s-4"><%= @post.creator.email %></p></br>
+<p class="center max-w-600 pad-s-4"><%= @post.question %></p><br>
+
+<h4 class="max-w-600 center">comments:</h4>
+<% @post.comments.each do |c| %>
+  <p class="max-w-600 center"><%= c.body %></p>
+<% end %>
+
+

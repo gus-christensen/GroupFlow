@@ -32,6 +32,10 @@ input[type=text], input[type=password], textarea {
   color: #05724f;
 }
 
+/*voting buttons*/
+
+
+
 /* positioning */
 .block {
   display: block;
@@ -176,6 +180,10 @@ input[type=text], input[type=password], textarea {
   max-width: 180px;
 }
 
+.max-w-600 {
+  max-width: 600px
+}
+
 .max-w-700 {
   max-width: 900px;
 }
@@ -239,6 +247,11 @@ input[type=text], input[type=password], textarea {
 .pad-s-1 {
   padding-left: 1em;
   padding-right: 1em;
+}
+
+.pad-s-4 {
+  padding-left: 4em;
+  padding-right: 4em;
 }
 
 .pad-t-1 {
