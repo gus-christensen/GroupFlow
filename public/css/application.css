@@ -282,6 +282,10 @@ input[type=text], input[type=password], textarea {
   border-radius: 1em;
 }
 
+.round-50 {
+  border-radius: 50%;
+}
+
 .t-pink {
   color: #FF0040;
 }
