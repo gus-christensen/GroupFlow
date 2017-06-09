@@ -6,7 +6,7 @@
   <ul class="posts no-bullets center">
     <% @posts.each do |post| %>
       <li class="post <%= post.id %>">
-        <span class="font-3-4"><%= post.created_at %></span>
+        <span class="font-3-4"><%= post.created_at.strftime("%B %-d, %Y  %l:%M%P") %></span>
         <span class="titles <%= post.id %> pad-s-1"><a href="/posts/<%= post.id %>"><%= post.title %></a></span>
         <% if current_user %>
           <% if post.creator.id == current_user.id %>
