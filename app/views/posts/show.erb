@@ -16,6 +16,8 @@
   <br>
 
   <% answer_counter = 0 %>
+
+
   <% @post.answers.each do |answer| %>
     <hr>
     <% answer_counter += 1 %>
@@ -24,13 +26,18 @@
     <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %></p>
     <a href ="/comments/new" class='comment-on-answer text-c block max-w-600 center' >Comment on this</a>
     <ul class="text-c no-bullets no-margin no-padding center block round-50 inline">
-      <li class="pipe-separate text-c round-50"><form id="upvote-question-form" class="pipe-separate block inline round-50 text-c center max-w-600 pad-s-4" method="post" action="/votes/answers/<%=@post.id%>">
-        <input type="hidden" name="answer" value="<%= answer.id %>" >
-        <input type="hidden" name="value" value="1" />
-        <input type="submit" class="round-50" name="upvote" value="&#8670;" />
-      </form></li>
-      <li><p class="center max-w-600 pad-s-4">total votes <%=answer.total_value_summed%></p></li>
-      <li class="pipe-separate round-50 text-c"><form class="pipe-separate text-c block inline round-50 center max-w-600 pad-s-4" id="downvote-question-form" method="post" action="/votes/answers/<%=@post.id%>">
+      <li class="pipe-separate text-c round-50">
+
+    <form id="upvote-question-form" class="pipe-separate block inline round-50 text-c center max-w-600 pad-s-4" method="post" action="/votes/answers/<%=@post.id%>">
+      <input type="hidden" name="answer" value="<%= answer.id %>" >
+      <input type="hidden" name="value" value="1" />
+      <input type="submit" class="round-50" name="upvote" value="&#8670;" />
+    </form></li>
+
+      <li id="total-votes-answer"><p class="center max-w-600 pad-s-4">total votes <%=answer.total_value_summed%></p></li>
+      <li class="pipe-separate round-50 text-c">
+
+    <form class="pipe-separate text-c block inline round-50 center max-w-600 pad-s-4" id="downvote-question-form" method="post" action="/votes/answers/<%=@post.id%>">
         <input type="hidden" name="answer" value="<%= answer.id %>" >
         <input type="hidden" name="value" value="-1" />
         <input type="submit" class="round-50" name="downvote" value="&#8671;" />
@@ -48,4 +55,5 @@
       <% end %>
     <% end %>
   <% end %>
+
 </div>
