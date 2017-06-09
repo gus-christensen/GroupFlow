@@ -3,14 +3,14 @@
 
 <h1 class="text-c">Flow Questions</h1>
 <main role="main">
-  <ul class="posts no-bullets center max-w-700">
+  <ul class="posts no-bullets center max-w-700" id="all-post-display">
     <% @posts.each do |post| %>
 
       <li class="post <%= post.id %>">
         <span class="font-3-4"><%= post.created_at.strftime("%B %-d, %Y  %l:%M%P") %></span>
         <span class="titles <%= post.id %> pad-s-1"><a href="/posts/<%= post.id %>"><%= post.title %></a></span>
 
-        total votes <%= post.total_value_summed %>
+        total votes <a id="total-post-votes"><%= post.total_value_summed %></a>
         <form id="upvote-question-form" method="post" action="/votes">
           <input type="hidden" name="post" value="<%= post.id %>" >
           <input type="hidden" name="value" value="1" />
