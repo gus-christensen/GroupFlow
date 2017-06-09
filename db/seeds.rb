@@ -35,7 +35,7 @@ comment = Comment.create(
 
 answer2 = Answer.create(
   body:"just google it!",
-  user_id: commenter.id,
+  user_id: commentor.id,
   post_id: post1.id
   )
 
