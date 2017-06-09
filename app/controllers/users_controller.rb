@@ -44,7 +44,7 @@ get '/users/logout' do
   redirect '/'
 end
 
-get '/users/:user_id' do
-  @user = User.find(params[:user_id])
+get '/users/:id' do
+  @user = User.find(params[:id])
   erb :'users/index'
 end
