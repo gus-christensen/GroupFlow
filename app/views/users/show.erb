@@ -1,8 +1,11 @@
 <h1 class='text-c'><%= @user.email %>'s situacion</h1>
 
-
 <% if @user.posts.empty? %>
-  <p class='text-c'>you haven't asked any questions</p>
+  <% if @user.id == current_user.id %>
+    <p class='text-c'>you haven't posted any questions</p>
+  <% else %>
+    <p class='text-c'><%= @user.email %> hasn't posted any questions</p>
+  <% end %>
 <% else %>
   <% @user.posts.each do |p| %>
     <li class="post <%= p.id %> no-bullets">
