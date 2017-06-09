@@ -421,3 +421,12 @@ td,
 th {
   padding: 0;
 }
+
+/**
+ * Remove bullets from lists
+ */
+
+li {
+  list-style-type: none;
+}
+
