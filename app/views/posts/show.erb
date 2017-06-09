@@ -4,19 +4,22 @@
 
 <p class="right max-w-600 text-r pad-s-4"><%= @posts.creator.email %></p></br>
 
-<h4 class="center max-w-600 pad-s-4">Description</h4>
-<p class="center max-w-600 pad-s-4"><%= @posts.question %></p><br>
-<hr>
-<h4 class="center max-w-600 pad-s-4">Answers</h4>
-<% @posts.answers.each do |answer| %>
-  <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
-  <p class="center max-w-600 pad-s-4"><%= answer.body %></p><br>
-<% end %>
+<div class ="post-deets">
+  <h4 class="center max-w-600 pad-s-4">Description</h4>
+  <p class="center max-w-600 pad-s-4"><%= @posts.question %></p><br>
+  <hr>
+  <h4 class="center max-w-600 pad-s-4">Answers</h4>
+  <% @posts.answers.each do |answer| %>
+    <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
+    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %><br>
+    <a href ="/comments/new" class='comment-on-answer' >Comment on this</a></p><br>
+  <% end %>
 
-<h4 class="center max-w-600 pad-s-4">Comments:</h4>
-<% @posts.comments.each do |comment| %>
-  <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
-  <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
-<% end %>
+  <h4 class="center max-w-600 pad-s-4">Comments:</h4>
+  <% @posts.comments.each do |comment| %>
+    <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
+    <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
+  <% end %>
+</div>
 
 

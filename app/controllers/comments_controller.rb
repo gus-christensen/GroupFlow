@@ -1,21 +1,27 @@
 # new
 get '/comments/new' do
-  erb :'comments/new'
+  if request.xhr?
+    erb :'/comments/_comment_form', layout:false
+  else
+    erb :'/comments/_comment_form', layout:false
+  end
 end
 
 
 # create
 # im a user who is leaving a comment on an answer
-# post '/comments' do
-#   Comment.new(
-#     commentable_id: ,
-#     commentable_type: ,
-#     user_id: ,
-#     body:
-#     )
-#   post
-#   erb:
-# end
+post '/comments' do
+  # binding.pry
+  comment = Comment.new(
+    body: params[:body],
+    user_id: session[:id] ,
+    )
+  if comment.save
+    redirect '/'
+  else
+    erb :'/comments/_comment_form', layout:false
+  end
+end
 
 
 # edit
