@@ -1,9 +1,10 @@
-<h1 class="text-c">Question: <%= @post.title %></h1>
 
+<h1 class="text-c">Question: <%= @post.title %></h1>
 <p class="center max-w-600 pad-s-4 font-3-4"><%= @post.creator.email %></p>
 
 <div class ="post-deets">
   <p class="center max-w-600 pad-s-4"><%= @post.question %></p><br><br>
+
 
   <% if !@post.comments.empty? %>
     <h4 class="center max-w-600 pad-s-4">Comments:</h4><br>
@@ -12,20 +13,30 @@
       <p class="center max-w-600 pad-s-4"><%= comment.body %></p><br>
     <% end %>
   <% end %>
-
-
   <br>
+
   <% answer_counter = 0 %>
   <% @post.answers.each do |answer| %>
     <hr>
     <% answer_counter += 1 %>
+
     <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4><br>
-    <p class="center max-w-600 pad-s-4 font-3-4"><%= answer.user.email %></p>
-    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %>
-    <% if answer.user.id == current_user.id %>
+    <p class="center max-w-600 pad-s-4 font-3-4">User:  <%= answer.user.email %></p>
+  <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %></p>
+      <form class="center max-w-600 pad-s-4" id="upvote-question-form" method="post" action="/votes/comments">
+      <input type="hidden" name="comment" value="<%= answer.id %>" >
+      <input type="hidden" name="value" value="1" />
+      <input type="submit" name="upvote" value="Upvote" />
+    </form>
+    <form class="center max-w-600 pad-s-4" id="downvote-question-form" method="post" action="/votes/comments">
+      <input type="hidden" name="comment" value="<%= answer.id %>" >
+      <input type="hidden" name="value" value="-1" />
+      <input type="submit" name="downvote" value="Downvote" />
+    </form>
+     <% if answer.user.id == current_user.id %>
       <a data-method="delete" class="delete <%= post.id %> font-3-4 right pad-s-1" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
-    <% end %><br>
-    <a href ="/comments/new" class='comment-on-answer' >Comment on this</a></p><br>
+    <% end %>
+    <a href ="/comments/new" class='comment-on-answer' >Comment on this</a><br>
 
     <% if !answer.comments.empty? %>
       <h4 class="center max-w-600 pad-s-4">Comments:</h4><br>
@@ -36,5 +47,6 @@
     <% end %>
   <% end %>
 </div>
+
 
 
