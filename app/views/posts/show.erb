@@ -4,14 +4,6 @@
 
 <h4 class="center max-w-600 pad-s-4">Description</h4>
 <p class="center max-w-600 pad-s-4"><%= @post.question %></p><br>
-<% answer_counter = 0 %>
-<% @post.answers.each do |answer| %>
-  <hr>
-  <% answer_counter += 1 %>
-  <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4>
-  <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
-  <p class="center max-w-600 pad-s-4"><%= answer.body %></p><br>
-<% end %>
 
 <% if !@post.comments.empty? %>
   <h4 class="center max-w-600 pad-s-4">Comments:</h4>
@@ -20,3 +12,21 @@
     <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
   <% end %>
 <% end %>
+
+<% answer_counter = 0 %>
+<% @post.answers.each do |answer| %>
+  <hr>
+  <% answer_counter += 1 %>
+  <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4>
+  <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
+  <p class="center max-w-600 pad-s-4"><%= answer.body %></p><br>
+
+  <% if !answer.comments.empty? %>
+  <h4 class="center max-w-600 pad-s-4">Comments:</h4>
+  <% answer.comments.each do |comment| %>
+    <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
+    <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
+  <% end %>
+<% end %>
+<% end %>
+
