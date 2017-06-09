@@ -21,18 +21,19 @@
     <% answer_counter += 1 %>
     <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4>
     <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
-    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %><br>
-      <form class="center max-w-600 pad-s-4" id="upvote-question-form" method="post" action="/votes/comments">
-      <input type="hidden" name="comment" value="<%= answer.id %>" >
-      <input type="hidden" name="value" value="1" />
-      <input type="submit" name="upvote" value="Upvote" />
-    </form>
-    <form class="center max-w-600 pad-s-4" id="downvote-question-form" method="post" action="/votes/comments">
-      <input type="hidden" name="comment" value="<%= answer.id %>" >
-      <input type="hidden" name="value" value="-1" />
-      <input type="submit" name="downvote" value="Downvote" />
-    </form>
-    <a href ="/comments/new" class='comment-on-answer' >Comment on this</a></p><br>
+    <p class="center max-w-600 pad-s-4">total votes <%=answer.total_value_summed%></p>
+    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %></p><br>
+      <form class="center max-w-600 pad-s-4" id="upvote-question-form" method="post" action="/votes/answers/<%=@post.id%>">
+        <input type="hidden" name="answer" value="<%= answer.id %>" >
+        <input type="hidden" name="value" value="1" />
+        <input type="submit" name="upvote" value="Upvote" />
+      </form>
+      <form class="center max-w-600 pad-s-4" id="downvote-question-form" method="post" action="/votes/answers/<%=@post.id%>">
+        <input type="hidden" name="answer" value="<%= answer.id %>" >
+        <input type="hidden" name="value" value="-1" />
+        <input type="submit" name="downvote" value="Downvote" />
+      </form>
+    <a href ="/comments/new" class='comment-on-answer' >Comment on this</a><br>
 
     <% if !answer.comments.empty? %>
       <h4 class="center max-w-600 pad-s-4">Comments:</h4>

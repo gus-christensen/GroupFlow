@@ -51,6 +51,6 @@ comment3 = Comment.create(
   commentable: post1
   )
 
-post1.votes.create(voteable:answerer,value:1)
+
 
 
