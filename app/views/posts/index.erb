@@ -5,9 +5,22 @@
 <main role="main">
   <ul class="posts no-bullets center">
     <% @posts.each do |post| %>
+
       <li class="post <%= post.id %>">
         <span class="font-3-4"><%= post.created_at %></span>
         <span class="titles <%= post.id %> pad-s-1"><a href="/posts/<%= post.id %>"><%= post.title %></a></span>
+
+        total votes <%= post.total_value_summed %>
+        <form id="upvote-question-form" method="post" action="/votes">
+          <input type="hidden" name="post" value="<%= post.id %>" >
+          <input type="hidden" name="value" value="1" />
+          <input type="submit" name="upvote" value="Upvote" />
+        </form>
+        <form id="downvote-question-form" method="post" action="/votes">
+          <input type="hidden" name="post" value="<%= post.id %>" >
+          <input type="hidden" name="value" value="-1" />
+          <input type="submit" name="downvote" value="Downvote" />
+        </form>
         <% if current_user %>
           <% if post.creator.id == current_user.id %>
             <a data-method="delete" class="delete <%= post.id %> font-3-4 right pad-s-1" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
