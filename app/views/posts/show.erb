@@ -2,6 +2,22 @@
 
 <p class="right max-w-600 text-r pad-s-4"><%= @post.creator.email %></p></br>
 
+
+<h4 class="max-w-600 center">comments:</h4>
+<% @post.comments.each do |c| %>
+  <p class="max-w-600 center"><%= c.body %></p>
+  <form class="max-w-600 center" id="upvote-question-form" method="post" action="/votes/comments">
+    <input type="hidden" name="comment" value="<%= c.id %>" >
+    <input type="hidden" name="value" value="1" />
+    <input type="submit" name="upvote" value="Upvote" />
+  </form>
+  <form class="max-w-600 center" id="downvote-question-form" method="post" action="/votes/comments">
+    <input type="hidden" name="comment" value="<%= c.id %>" >
+    <input type="hidden" name="value" value="-1" />
+    <input type="submit" name="downvote" value="Downvote" />
+  </form>
+<% end %>
+
 <div class ="post-deets">
   <h4 class="center max-w-600 pad-s-4">Description</h4>
   <p class="center max-w-600 pad-s-4"><%= @post.question %></p><br>
@@ -34,5 +50,6 @@
     <% end %>
   <% end %>
 </div>
+
 
 
