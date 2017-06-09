@@ -1,6 +1,7 @@
 # new
 get '/comments/new' do
   if request.xhr?
+    # binding.pry
     erb :'/comments/_comment_form', layout:false
   else
     erb :'/comments/_comment_form', layout:false
@@ -12,12 +13,13 @@ end
 # im a user who is leaving a comment on an answer
 post '/comments' do
   # binding.pry
-  comment = Comment.new(
+  comment = Comment.create(
     body: params[:body],
-    user_id: session[:id] ,
+    user_id: session[:id]
     )
+
   if comment.save
-    redirect '/'
+    erb :'/comments/_comment_show', layout: false, locals: {comment:comment}
   else
     erb :'/comments/_comment_form', layout:false
   end
