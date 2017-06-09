@@ -20,24 +20,25 @@
     <hr>
     <% answer_counter += 1 %>
     <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4><br>
-    <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p>
-    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %></p><br>
-      <form class="center max-w-600 pad-s-4" id="upvote-question-form" method="post" action="/votes/answers/<%=@post.id%>">
+    <p class="center max-w-600 pad-s-4 font-3-4">User:  <%= answer.user.email %></p>
+    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %></p>
+    <a href ="/comments/new" class='comment-on-answer text-c block max-w-600 center' >Comment on this</a>
+    <ul class="text-c no-bullets no-margin no-padding center block round-50 inline">
+      <li class="pipe-separate text-c round-50"><form id="upvote-question-form" class="pipe-separate block inline round-50 text-c center max-w-600 pad-s-4" method="post" action="/votes/answers/<%=@post.id%>">
         <input type="hidden" name="answer" value="<%= answer.id %>" >
         <input type="hidden" name="value" value="1" />
-        <input type="submit" name="upvote" value="Upvote" />
-      </form>
-      <p class="center max-w-600 pad-s-4">total votes <%=answer.total_value_summed%></p>
-      <form class="center max-w-600 pad-s-4" id="downvote-question-form" method="post" action="/votes/answers/<%=@post.id%>">
+        <input type="submit" class="round-50" name="upvote" value="&#8670;" />
+      </form></li>
+      <li><p class="center max-w-600 pad-s-4">total votes <%=answer.total_value_summed%></p></li>
+      <li class="pipe-separate round-50 text-c"><form class="pipe-separate text-c block inline round-50 center max-w-600 pad-s-4" id="downvote-question-form" method="post" action="/votes/answers/<%=@post.id%>">
         <input type="hidden" name="answer" value="<%= answer.id %>" >
         <input type="hidden" name="value" value="-1" />
-        <input type="submit" name="downvote" value="Downvote" />
-      </form>
-      <% if answer.user.id == current_user.id %>
-        <a data-method="delete" class="delete <%= post.id %> font-3-4 right pad-s-1" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
-      <% end %>
-
-    <a href ="/comments/new" class='comment-on-answer' >Comment on this</a><br>
+        <input type="submit" class="round-50" name="downvote" value="&#8671;" />
+      </form></li>
+    </ul>
+    <% if answer.user.id == current_user.id %>
+      <a data-method="delete" class="delete <%= post.id %> font-3-4 right pad-s-1" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
+    <% end %><br>
 
     <% if !answer.comments.empty? %>
       <h4 class="center max-w-600 pad-s-4">Comments:</h4><br>
@@ -48,6 +49,3 @@
     <% end %>
   <% end %>
 </div>
-
-
-
