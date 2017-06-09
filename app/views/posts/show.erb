@@ -1,34 +1,36 @@
-<h1 class="text-c">Question: <%= @post.title %></h1></br>
+<h1 class="text-c">Question: <%= @post.title %></h1>
 
-<p class="right max-w-600 text-r pad-s-4"><%= @post.creator.email %></p></br>
+<p class="center max-w-600 pad-s-4 font-3-4"><%= @post.creator.email %></p>
 
 <div class ="post-deets">
-  <h4 class="center max-w-600 pad-s-4">Description</h4>
-  <p class="center max-w-600 pad-s-4"><%= @post.question %></p><br>
-  
+  <p class="center max-w-600 pad-s-4"><%= @post.question %></p><br><br>
+
   <% if !@post.comments.empty? %>
-    <h4 class="center max-w-600 pad-s-4">Comments:</h4>
+    <h4 class="center max-w-600 pad-s-4">Comments:</h4><br>
     <% @post.comments.each do |comment| %>
-      <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
-      <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
+      <p class="center max-w-600 pad-s-4 font-3-4"><%= comment.user.email %></p>
+      <p class="center max-w-600 pad-s-4"><%= comment.body %></p><br>
     <% end %>
   <% end %>
-  
-  
-  
+
+
+  <br>
   <% answer_counter = 0 %>
   <% @post.answers.each do |answer| %>
     <hr>
     <% answer_counter += 1 %>
-    <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4>
-    <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
-    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %><br>
+    <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4><br>
+    <p class="center max-w-600 pad-s-4 font-3-4"><%= answer.user.email %></p>
+    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %>
+    <% if answer.user.id == current_user.id %>
+      <a data-method="delete" class="delete <%= post.id %> font-3-4 right pad-s-1" href='/posts/<%= post.id %>' data-disabled="true">:delete:</a>
+    <% end %><br>
     <a href ="/comments/new" class='comment-on-answer' >Comment on this</a></p><br>
 
     <% if !answer.comments.empty? %>
-      <h4 class="center max-w-600 pad-s-4">Comments:</h4>
+      <h4 class="center max-w-600 pad-s-4">Comments:</h4><br>
       <% answer.comments.each do |comment| %>
-        <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
+        <p class="center max-w-600 pad-s-4 font-3-4"><%= comment.user.email %></p>
         <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
       <% end %>
     <% end %>
