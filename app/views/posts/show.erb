@@ -1,14 +1,22 @@
-<!-- <span class="titles <%= @post.id %>"><a href="/posts/<%= @post.id %>" %>"><%= @post.title %></a></span> -->
 
 
-<h1 class="text-c">Question: <%= @post.title %></h1></br>
+<h1 class="text-c">Question: <%= @posts.title %></h1></br>
 
-<p class="right max-w-600 text-r pad-s-4"><%= @post.creator.email %></p></br>
-<p class="center max-w-600 pad-s-4"><%= @post.question %></p><br>
+<p class="right max-w-600 text-r pad-s-4"><%= @posts.creator.email %></p></br>
 
-<h4 class="max-w-600 center">comments:</h4>
-<% @post.comments.each do |c| %>
-  <p class="max-w-600 center"><%= c.body %></p>
+<h4 class="center max-w-600 pad-s-4">Description</h4>
+<p class="center max-w-600 pad-s-4"><%= @posts.question %></p><br>
+<hr>
+<h4 class="center max-w-600 pad-s-4">Answers</h4>
+<% @posts.answers.each do |answer| %>
+  <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
+  <p class="center max-w-600 pad-s-4"><%= answer.body %></p><br>
+<% end %>
+
+<h4 class="center max-w-600 pad-s-4">Comments:</h4>
+<% @posts.comments.each do |comment| %>
+  <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
+  <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
 <% end %>
 
 

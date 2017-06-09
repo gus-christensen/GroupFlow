@@ -21,7 +21,7 @@ post '/posts' do
 end
 
 get '/posts/:id' do
-  @post = Post.find(params[:id])
+  @posts = Post.find_by(id:params[:id])
   erb :'posts/show'
 end
 
