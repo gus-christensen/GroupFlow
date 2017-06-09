@@ -3,7 +3,7 @@
 
 <h1 class="text-c">Flow Questions</h1>
 <main role="main">
-  <ul class="posts no-bullets center">
+  <ul class="posts no-bullets center max-w-700">
     <% @posts.each do |post| %>
       <li class="post <%= post.id %>">
         <span class="font-3-4"><%= post.created_at.strftime("%B %-d, %Y  %l:%M%P") %></span>
