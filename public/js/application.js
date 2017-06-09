@@ -15,4 +15,17 @@ $(document).ready(function() {
     });
   });
 
+  $('.comment-on-answer').on("click",function(event){
+    event.preventDefault();
+    var newcommentURL = $(this).attr('href')
+
+    $.get(newcommentURL, function(response){
+      $('#answer').append(response)
+    });
+
+
+  });
+
+
+
 });

@@ -29,7 +29,25 @@ answer = Answer.create(
 
 comment = Comment.create(
   body:"Bro, That was a bad reccommendation",
-  user_id:1,
+  user_id:commentor.id,
+  commentable: answer
+  )
+
+answer2 = Answer.create(
+  body:"just google it!",
+  user_id: commentor.id,
+  post_id: post1.id
+  )
+
+comment2 = Comment.create(
+  body:"Bro, That was a bad reccommendation",
+  user_id:answerer.id,
+  commentable: answer2
+  )
+
+comment3 = Comment.create(
+  body:"like rly",
+  user_id:creator.id,
   commentable: post1
   )
 

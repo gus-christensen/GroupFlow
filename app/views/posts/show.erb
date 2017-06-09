@@ -1,10 +1,7 @@
-<!-- <span class="titles <%= @post.id %>"><a href="/posts/<%= @post.id %>" %>"><%= @post.title %></a></span> -->
-
-
 <h1 class="text-c">Question: <%= @post.title %></h1></br>
 
 <p class="right max-w-600 text-r pad-s-4"><%= @post.creator.email %></p></br>
-<p class="center max-w-600 pad-s-4"><%= @post.question %></p><br>
+
 
 <h4 class="max-w-600 center">comments:</h4>
 <% @post.comments.each do |c| %>
@@ -20,5 +17,39 @@
     <input type="submit" name="downvote" value="Downvote" />
   </form>
 <% end %>
+
+<div class ="post-deets">
+  <h4 class="center max-w-600 pad-s-4">Description</h4>
+  <p class="center max-w-600 pad-s-4"><%= @post.question %></p><br>
+  
+  <% if !@post.comments.empty? %>
+    <h4 class="center max-w-600 pad-s-4">Comments:</h4>
+    <% @post.comments.each do |comment| %>
+      <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
+      <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
+    <% end %>
+  <% end %>
+  
+  
+  
+  <% answer_counter = 0 %>
+  <% @post.answers.each do |answer| %>
+    <hr>
+    <% answer_counter += 1 %>
+    <h4 class="center max-w-600 pad-s-4 ">Answer #<%= answer_counter %></h4>
+    <p class="center max-w-600 pad-s-4">User:  <%= answer.user.email %></p><br>
+    <p id="answer" class="center max-w-600 pad-s-4"><%= answer.body %><br>
+    <a href ="/comments/new" class='comment-on-answer' >Comment on this</a></p><br>
+
+    <% if !answer.comments.empty? %>
+      <h4 class="center max-w-600 pad-s-4">Comments:</h4>
+      <% answer.comments.each do |comment| %>
+        <p class="center max-w-600 pad-s-4">User:  <%= comment.user.email %></p><br>
+        <p class="center max-w-600 pad-s-4"><%= comment.body %></p>
+      <% end %>
+    <% end %>
+  <% end %>
+</div>
+
 
 

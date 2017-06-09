@@ -12,6 +12,7 @@ html {
   background: url(../images/diamond-bg.jpg);
   background-attachment: fixed;
   line-height: 1.4;
+  font-family: "Comic Sans MS", cursive, sans-serif;
 }
 
 body {
